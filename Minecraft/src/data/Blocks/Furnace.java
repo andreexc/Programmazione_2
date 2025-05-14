@@ -29,4 +29,17 @@ public class Furnace {
         this.SmeltableInput = to_smelt;
         smelt();
     }
+
+    private void reset_furnace() {
+        this.SmeltableInput = BlockCreator.NullBlock();
+        this.SmeltableOutput = BlockCreator.NullBlock();
+    }
+
+    public Block getSmeltedBlock() {
+        Block out = this.SmeltableOutput;
+        this.reset_furnace();
+        return out;
+    }
+
+    public SmeltableBlock get_input() { return this.SmeltableInput; }
 }

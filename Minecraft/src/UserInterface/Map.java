@@ -129,4 +129,15 @@ public class Map {
             change_cell(new MapCoordinates(r, c), BlockCreator.getRandomBlock());
         }
     }
+
+    public boolean is_pickable(MapCoordinates c) {
+        if (!c.isInbound()) return false;
+        if (mappa[c.getX()][c.getY()].is_pickable()) return true;
+        return false;
+    }
+
+    public Block gimme_pickable(MapCoordinates c) {
+        if (!c.isInbound()) return null;
+        return mappa[c.getX()][c.getY()]; // ASSUMO CHE SIA PICKABLE !!!!
+    }
 }

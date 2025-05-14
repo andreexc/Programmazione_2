@@ -7,6 +7,7 @@ public class NullBlock extends AbstractSolidBlock implements SmeltableBlock {
 
     public NullBlock() {
         super();
+        this.pickable = false;
         this.contenuto = 'N';
         this.blockname = "NULL";
     }

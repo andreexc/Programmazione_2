@@ -28,19 +28,26 @@ public class Main{
     }
     */
 
+
     public static void main(String[] args) {
 
-        MainView mv = new MainView();
-        mv.display_map();
-        mv.display_furnace();
 
-        System.out.println("Inserisci coordinate da smeltare");
+        MainView mv = new MainView();
+        mv.display_all();
+
+        System.out.println("Inserisci le coordinate del blocco da mettere nell'inventario:");
         Scanner sc = new Scanner(System.in);
         MapCoordinates c = new MapCoordinates(sc.nextInt(), sc.nextInt());
-        mv.move_into_furnace(c);
+        sc.close();
 
-        mv.display_map();
-        mv.display_furnace();
+        mv.pick_up_block(c);
+        mv.display_all();
 
+        mv.Inventory_to_Furnace(1);
+        mv.Furnace_to_Inventory();
+        mv.display_all();
+
+        // BUG : SE PRENDO WATER LO PRENDE (NON DEVE)
+        // BUG : QUANDO SMELTO IL BLOCCO DA SMELTARE RIMANE NELL'INVENTARIO
     }
 }

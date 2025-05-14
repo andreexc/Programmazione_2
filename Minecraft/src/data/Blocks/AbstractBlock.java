@@ -9,6 +9,11 @@ public abstract class AbstractBlock implements Block {
     protected boolean falls_with_gravity;
     protected boolean fall_through;
     protected String blockname;
+    protected boolean pickable;
+
+    public AbstractBlock() {
+        this.pickable = false;
+    }
 
     // getter del contenuto
     public char display() {
@@ -22,6 +27,8 @@ public abstract class AbstractBlock implements Block {
     public boolean get_fall_through() {
         return this.fall_through;
     }
+
+    public boolean is_pickable() { return this.pickable; }
 
     @Override
     public String toString() {
