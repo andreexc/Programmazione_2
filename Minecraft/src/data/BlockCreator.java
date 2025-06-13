@@ -37,14 +37,12 @@ public abstract class BlockCreator {
         return new NullBlock();
     }
 
-    public static Block AirBlock() {
-        return new AirBlock();
-    }
-
     public static Block GlassBlock() { return new GlassBlock(); }
 
     public static SmeltableBlock RawIronBlock() { return new RawIronBlock(); }
 
     // public static Block IronSwordBlock() { return new IronSwordBlock(); }
+
+    public static Block TorchBlock() { return new TorchBlock(); }
 
 }

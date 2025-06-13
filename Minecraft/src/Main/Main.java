@@ -2,6 +2,7 @@ package Main;
 import Tools.MapCoordinates;
 import java.util.Scanner;
 import UserInterface.MainView;
+import data.Blocks.TorchBlock;
 
 public class Main{
 
@@ -35,19 +36,29 @@ public class Main{
         MainView mv = new MainView();
         mv.display_all();
 
-        System.out.println("Inserisci le coordinate del blocco da mettere nell'inventario:");
         Scanner sc = new Scanner(System.in);
-        MapCoordinates c = new MapCoordinates(sc.nextInt(), sc.nextInt());
-        sc.close();
+        while (true) {
+            System.out.println("Inserisci le coordinate del blocco da mettere nell'inventario:");
+            MapCoordinates c = new MapCoordinates(sc.nextInt(), sc.nextInt());
 
+            mv.change_cell(c, new TorchBlock());
+            mv.display_all();
+        }
+
+        /*
+        System.out.println("pick-up");
         mv.pick_up_block(c);
         mv.display_all();
 
+        System.out.println("pick-up");
+        mv.pick_up_block(c);
+        mv.display_all();
+
+        System.out.println("smelt");
         mv.Inventory_to_Furnace(1);
         mv.Furnace_to_Inventory();
         mv.display_all();
+        */
 
-        // BUG : SE PRENDO WATER LO PRENDE (NON DEVE)
-        // BUG : QUANDO SMELTO IL BLOCCO DA SMELTARE RIMANE NELL'INVENTARIO
     }
 }

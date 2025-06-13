@@ -4,6 +4,8 @@ import Tools.MapCoordinates;
 import data.BlockCreator;
 import data.Blocks.Furnace;
 import data.Blocks.NullBlock;
+import data.Exceptions.BlockErrorException;
+import data.Exceptions.WrongCoordinatesException;
 import data.Interfaces.Block;
 import data.Interfaces.SmeltableBlock;
 import data.Inventory;
@@ -51,13 +53,28 @@ public class MainView {
     }
     */
 
+    public void change_cell(MapCoordinates c, Block block) { Mappa.change_cell(c, block); }
+
     private void rimuovi_cella(MapCoordinates c) {
-        this.Mappa.change_cell(c, BlockCreator.AirBlock());
+        try {
+            this.Mappa.change_cell(c, BlockCreator.defaultBlock());
+        }
+        catch (WrongCoordinatesException e) {
+            System.out.println("Out of Bounds");
+        }
     }
 
     public void pick_up_block(MapCoordinates c) {
-        if (Mappa.is_pickable(c)) { Inventario.add_Block(Mappa.gimme_pickable(c)); }
-        this.rimuovi_cella(c);
+        try {
+            Inventario.add_Block(Mappa.gimme_pickable(c));
+            this.rimuovi_cella(c);
+        }
+        catch (BlockErrorException e) {
+            System.out.println("Selection is not pickable");
+        }
+        catch (WrongCoordinatesException e) {
+            System.out.println("Out of Bounds");
+        }
     }
 
     public void Inventory_to_Furnace(int index) {
@@ -74,7 +91,6 @@ public class MainView {
         // metterlo nell'inventario o no
     }
 
-    public void toggle_inventory_comparator() {}
-
+    public void toggle_inventory_comparator() { this.Inventario.toggleComparator(); }
 
 }

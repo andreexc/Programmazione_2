@@ -3,6 +3,10 @@ package UserInterface;
 import Tools.MapCoordinates;
 import data.BlockCreator;
 import data.Blocks.NullBlock;
+import data.Blocks.SandBlock;
+import data.Blocks.TorchBlock;
+import data.Exceptions.BlockErrorException;
+import data.Exceptions.WrongCoordinatesException;
 import data.Interfaces.Block;
 import java.util.Random;
 
@@ -39,11 +43,6 @@ public class Map {
         }
     }
 
-    public Block getBlockCell(MapCoordinates c) {
-        if (!c.isInbound()) return BlockCreator.NullBlock();
-        return mappa[c.getX()][c.getY()];
-    }
-
     // metodo che stampa a video la mappa
     public void display_on_out() {
         for (int r = 0; r < MapCoordinates.ROWS; r++) {
@@ -56,11 +55,10 @@ public class Map {
 
     // metodo che mi permette di cambiare un determinato
     // blocco con un altro
-    public void change_cell(MapCoordinates c, Block newBlock) {
+    public void change_cell(MapCoordinates c, Block newBlock) throws WrongCoordinatesException {
         // controllo che le coordinate siano valide
         if (!c.isInbound()) {
-            // meglio lanciare una exception ?
-            return;
+            throw new WrongCoordinatesException();
         }
 
         // faccio puntare al nuovo blocco
@@ -89,7 +87,6 @@ public class Map {
 
         if (!this.mappa[x][y].get_falls_with_gravity()) return;
         if (!this.mappa[x+1][y].get_fall_through()) return;
-
         swap(c);
         applyGravityRec(new MapCoordinates(x+1, y));
     }
@@ -99,10 +96,16 @@ public class Map {
 
         int x = c.getX();
         int y = c.getY();
-
-        Block tmp = this.mappa[x][y];
-        this.mappa[x][y] = this.mappa[x+1][y];
-        this.mappa[x+1][y] = tmp;
+        if (this.mappa[x+1][y] instanceof TorchBlock) {
+            if (this.mappa[x][y] instanceof SandBlock) {
+                this.mappa[x][y] = BlockCreator.defaultBlock();
+            }
+        }
+        else {
+            Block tmp = this.mappa[x][y];
+            this.mappa[x][y] = this.mappa[x+1][y];
+            this.mappa[x+1][y] = tmp;
+        }
     }
 
     private void addRiver() {
@@ -130,14 +133,15 @@ public class Map {
         }
     }
 
-    public boolean is_pickable(MapCoordinates c) {
-        if (!c.isInbound()) return false;
+    private boolean is_pickable(MapCoordinates c) throws WrongCoordinatesException {
+        if (!c.isInbound()) throw new WrongCoordinatesException();
         if (mappa[c.getX()][c.getY()].is_pickable()) return true;
         return false;
     }
 
-    public Block gimme_pickable(MapCoordinates c) {
-        if (!c.isInbound()) return null;
-        return mappa[c.getX()][c.getY()]; // ASSUMO CHE SIA PICKABLE !!!!
+    public Block gimme_pickable(MapCoordinates c) throws WrongCoordinatesException, BlockErrorException {
+        if (!c.isInbound()) throw new WrongCoordinatesException();
+        if (this.is_pickable(c)) return this.mappa[c.getX()][c.getY()];
+        else throw new BlockErrorException();
     }
 }
