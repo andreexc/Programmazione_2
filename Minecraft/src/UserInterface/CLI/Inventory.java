@@ -1,4 +1,4 @@
-package data;
+package UserInterface.CLI;
 
 import java.util.ArrayList;
 import java.util.Collection;

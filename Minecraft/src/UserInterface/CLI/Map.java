@@ -1,8 +1,7 @@
-package UserInterface;
+package UserInterface.CLI;
 
 import Tools.MapCoordinates;
 import data.BlockCreator;
-import data.Blocks.NullBlock;
 import data.Blocks.SandBlock;
 import data.Blocks.TorchBlock;
 import data.Exceptions.BlockErrorException;
@@ -51,6 +50,11 @@ public class Map {
             }
             System.out.println();
         }
+    }
+
+    // DEBUG
+    public Block getblock(MapCoordinates coord) {
+        return this.mappa[coord.getX()][coord.getY()];
     }
 
     // metodo che mi permette di cambiare un determinato

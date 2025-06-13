@@ -10,10 +10,10 @@ public class BlockComparator implements Comparator<Block> {
 
     @Override
     public int compare(Block o1, Block o2) {
-        return Integer.compare(this.get_value_of_block(o1), this.get_value_of_block(o2));
+        return Integer.compare(get_value_of_block(o1), get_value_of_block(o2));
     }
 
-    public int get_value_of_block(Block b) {
+    public static int get_value_of_block(Block b) {
         if (b instanceof NullBlock) {
             return 0;
         }

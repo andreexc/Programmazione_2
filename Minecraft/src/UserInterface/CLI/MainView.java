@@ -1,4 +1,4 @@
-package UserInterface;
+package UserInterface.CLI;
 
 import Tools.MapCoordinates;
 import data.BlockCreator;
@@ -8,7 +8,6 @@ import data.Exceptions.BlockErrorException;
 import data.Exceptions.WrongCoordinatesException;
 import data.Interfaces.Block;
 import data.Interfaces.SmeltableBlock;
-import data.Inventory;
 
 public class MainView {
 

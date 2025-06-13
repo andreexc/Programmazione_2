@@ -1,7 +1,7 @@
 package Main;
 import Tools.MapCoordinates;
 import java.util.Scanner;
-import UserInterface.MainView;
+import UserInterface.CLI.MainView;
 import data.Blocks.TorchBlock;
 
 public class Main{
@@ -42,6 +42,7 @@ public class Main{
             MapCoordinates c = new MapCoordinates(sc.nextInt(), sc.nextInt());
 
             mv.change_cell(c, new TorchBlock());
+            mv.pick_up_block(c);
             mv.display_all();
         }
 
