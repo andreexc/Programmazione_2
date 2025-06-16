@@ -7,6 +7,9 @@
       <module fileurl="file://$PROJECT_DIR$/Minecraft/Minecraft.iml" filepath="$PROJECT_DIR$/Minecraft/Minecraft.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Programmazione_2.iml" filepath="$PROJECT_DIR$/.idea/Programmazione_2.iml" />
       <module fileurl="file://$PROJECT_DIR$/Esercitazioni_Esame/QuestsLog/QuestsLog.iml" filepath="$PROJECT_DIR$/Esercitazioni_Esame/QuestsLog/QuestsLog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SoloVentilatori/SoloVentilatori.iml" filepath="$PROJECT_DIR$/SoloVentilatori/SoloVentilatori.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SoluzLab/SoluzLab.iml" filepath="$PROJECT_DIR$/SoluzLab/SoluzLab.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StreamThis/StreamThis.iml" filepath="$PROJECT_DIR$/StreamThis/StreamThis.iml" />
       <module fileurl="file://$PROJECT_DIR$/Test/Test.iml" filepath="$PROJECT_DIR$/Test/Test.iml" />
     </modules>
   </component>

@@ -9,16 +9,16 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class AcquistaWindow extends Stage {
+public class ErrorWindow extends Stage {
 
-    public AcquistaWindow() {
+    public ErrorWindow(String message) {
         super();
-        this.init_window(this);
+        this.init_window(this, message);
     }
 
-    private void init_window(Stage stage) {
+    private void init_window(Stage stage, String message) {
         VBox body = new VBox();
-        Text messaggio = new Text("ERRORE: connessione non presente.");
+        Text messaggio = new Text(message);
         Button ok_btn = new Button("OK");
         ok_btn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             @Override

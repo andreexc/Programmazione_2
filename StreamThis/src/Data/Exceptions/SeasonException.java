@@ -1,7 +1,7 @@
-package Data;
+package Data.Exceptions;
 
 public class SeasonException extends RuntimeException {
-  public SeasonException(String message) {
-    super(message);
-  }
+    public SeasonException() {
+        super("Errore durante la selezione delle stagioni");
+    }
 }
