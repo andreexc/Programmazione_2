@@ -20,14 +20,20 @@ public class Furnace {
                                                                  + " |");
     }
 
-    private void smelt() {
-        this.SmeltableOutput = this.SmeltableInput.smelt();
-        this.SmeltableInput = BlockCreator.NullBlock();
+    public void smelt() {
+        System.out.println("SMEEELTTTT");
+        System.out.println(this.SmeltableInput.toString());
+        if (!this.SmeltableInput.isNull()) {
+            System.out.println("OOOOO");
+            this.SmeltableOutput = this.SmeltableInput.smelt();
+            //this.SmeltableInput = BlockCreator.NullBlock();
+        }
     }
 
     public void setInput(SmeltableBlock to_smelt) {
         this.SmeltableInput = to_smelt;
-        smelt();
+        System.out.println(to_smelt.toString());
+        System.out.println(this.SmeltableInput.toString());
     }
 
     private void reset_furnace() {

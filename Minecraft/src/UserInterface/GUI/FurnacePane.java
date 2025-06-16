@@ -1,6 +1,8 @@
 package UserInterface.GUI;
 
 import data.BlockCreator;
+import data.Interfaces.Block;
+import data.Interfaces.SmeltableBlock;
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -30,5 +32,13 @@ public class FurnacePane extends VBox {
 
     public BlockPane getOutput() {
         return output;
+    }
+
+    public void setInput(Block input) {
+        this.input = new BlockPane(input);
+    }
+
+    public void setOutput(Block output) {
+        this.output = new BlockPane(output);
     }
 }

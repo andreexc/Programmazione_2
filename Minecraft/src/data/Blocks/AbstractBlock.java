@@ -15,6 +15,10 @@ public abstract class AbstractBlock implements Block {
         this.pickable = false;
     }
 
+    public boolean isNull(){
+        return (this instanceof NullBlock);
+    }
+
     // getter del contenuto
     public char display() {
         return this.contenuto;

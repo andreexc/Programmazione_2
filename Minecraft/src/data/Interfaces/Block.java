@@ -6,4 +6,5 @@ public interface Block extends InventoryBlock {
     boolean get_falls_with_gravity();
     boolean get_fall_through();
     boolean is_pickable();
+    boolean isNull();
 }

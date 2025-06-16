@@ -1,6 +1,7 @@
 package UserInterface.CLI;
 
 import Tools.MapCoordinates;
+import UserInterface.GUI.MainGui;
 import data.BlockCreator;
 import data.Blocks.Furnace;
 import data.Blocks.NullBlock;
@@ -92,4 +93,15 @@ public class MainView {
 
     public void toggle_inventory_comparator() { this.Inventario.toggleComparator(); }
 
+    public Furnace getFornace() {
+        return Fornace;
+    }
+
+    public Inventory getInventario() {
+        return Inventario;
+    }
+
+    public Map getMap() {
+        return Mappa;
+    }
 }

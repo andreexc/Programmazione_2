@@ -72,5 +72,10 @@ public class Inventory {
         else if (this.comparator instanceof BlockComparator) {
             this.comparator = new AlphabeticalBlockComparator();
         }
+        this.ordinaInventario();
+    }
+
+    public Iterator<Block> getIterator() {
+        return this.Inventario.iterator();
     }
 }
